@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -21,9 +22,15 @@ public class EndUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public Long id;
+    @Length(max = 20, message = "maximum of 20 characters for the First Name")
     public String FirstName;
+    @Length(min = 2, message = "minimum of 2 characters in length")
     public String LastName;
+
+
+
 
     public Long getId() {
         return id;
@@ -57,5 +64,7 @@ public class EndUser {
         State = state;
     }
 
+    @Length(min = 4, message = "minimum of 4 characters in length")
+    @Length(max = 20, message = "maximum of 20 characters in length")
     public String State;
 }
